@@ -1,0 +1,63 @@
+
+    <div class="container cbox">
+        <div class="card-header "><h2 class="text-center text-primary">Login</h2></div>
+        <form class="px-4 py-3" (ngSubmit)="onLogined()" #userform="ngForm">
+           <!-- input field -->
+            <fieldset>                
+                <div class="form-group">
+                 <label for="username">User Name</label>
+                 <div class="col-md-15">
+                 <input  type="text" name="username" class="form-control" id="username" [(ngModel)]="username" 
+                  placeholder="User Name" #urname="ngModel" required minlength="5" autocomplete="off"> 
+               <!-- #f="ngModel" showValue(f) #username="ngModel"-->
+                     <div class="alert alert-danger" *ngIf="!urname.valid && urname.touched">
+     
+                        <div *ngIf="urname.errors.required">
+                             enter your username...
+                        </div>                  
+     
+                        <div *ngIf="urname.errors.minlength">
+                            username must be atleast 5 character...
+                        </div>
+     
+                      </div>
+                  </div>         
+                </div>
+               
+               <div class="form-group">
+                 <label for="password">Password</label>
+                 <div class="col-md-15">
+                 <input  type="password" name="password" class="form-control" id="password" [(ngModel)]="password" 
+                  placeholder="Password" #pass="ngModel" required minlength="5" maxlength="10" >
+                     <div class="alert alert-danger" *ngIf="!pass.valid && pass.touched">
+                         <div *ngIf="pass.errors.required">
+                             enter your password...
+                        </div>
+     
+                        <div *ngIf="pass.errors.maxlength">
+                           password can't be more than 10 character...
+                        </div>
+     
+                        <div *ngIf="pass.errors.minlength">
+                            password must be atleast 5 character...
+                        </div>
+                     </div>
+                 </div>
+               </div>                
+          <!-- check bor -->
+          <div class="form-group">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="dropdownCheck">
+              <label class="form-check-label" for="dropdownCheck">
+                Remember me
+              </label>
+            </div>
+          </div>           
+          <button   routerLink="/dashboard" type="ngSubmit"  class="btn btn-primary" [disabled]="userform.invalid">Sign in</button>          
+        </fieldset>
+        </form>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">New around here? Sign up</a>
+        <a class="dropdown-item" href="#">Forgot password?</a>
+    </div>
+      
