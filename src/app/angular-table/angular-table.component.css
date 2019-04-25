@@ -1,0 +1,30 @@
+@import "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css";
+@import "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+
+.cbox{
+    margin-top: 50px;
+}
+
+.heading{
+    background-color: cadetblue;
+}
+
+input[type="search"]{
+    border-radius: 0px;
+    height: 30px;
+    width: 300px;
+    margin-bottom: 10px;
+    border:2px solid cadetblue;
+  }
+  input[type="search"]:focus{
+    border-radius: 0px;
+    height: 30px;
+    margin-bottom: 10px;
+    outline: none;
+  }
+
+#searchform{
+width: 300px;
+float: right;
+}

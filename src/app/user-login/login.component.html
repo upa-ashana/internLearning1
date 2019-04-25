@@ -24,8 +24,8 @@
                   </div>         
                 </div>
                
-               <div class="form-group">
-                 <label for="password">Password</label>
+               <div class="form-group"> <!-- [class.has-danger]="pass.invalid && pass.touched"-->
+                 <label class="control-label" for="password">Password</label>
                  <div class="col-md-15">
                  <input  type="password" name="password" class="form-control" id="password" [(ngModel)]="password" 
                   placeholder="Password" #pass="ngModel" required minlength="5" maxlength="10" >
@@ -60,4 +60,10 @@
         <a class="dropdown-item" href="#">New around here? Sign up</a>
         <a class="dropdown-item" href="#">Forgot password?</a>
     </div>
+
+    <!-- <div class="form-group has-danger">
+  <label class="form-control-label" for="inputDanger1">Invalid input</label>
+  <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
+  <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
+</div> -->
       

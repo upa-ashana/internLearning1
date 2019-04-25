@@ -1,0 +1,248 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body> 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div id="logo">
+  <a class="navbar-brand mr-5" href="#">
+    <img src="../../assets/img/eSewa-nepal1.png" width="100" height="60" alt="">
+   </a>
+  </div>  
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ 
+
+  <div class="collapse navbar-collapse" id="navbarColor02">    
+      <form class="form-inline my-2 my-lg-0"> 
+        <div id="searchform">      
+          <input id="searchinput" class="mr-0" type="search" placeholder="Search...">          
+          <button id="searchbtn" class="btn" type="submit">
+            <span style="width: 25px;"><i class="fas fa-search"></i></span>
+          </button>
+        </div>   
+
+        <!-- username -->
+        <div id="borderlessUser">
+        <div class="form-group ml-5">  
+            <span style="width: 25px; color: green">
+              <i class="fas fa-user"></i>
+            </span>                  
+            <input  type="text" name="username" id="username" [(ngModel)]="username" 
+             placeholder="username" #urname="ngModel" required  autocomplete="off"> 
+             <div class="dropdown-divider"></div>                                 
+           </div>
+           </div>
+
+           <!-- password -->
+           <div id="borderlessPassword">
+           <div class="form-group ml-3 mr-5"> 
+              <span style="width: 25px; color: green">
+                  <i class="fas fa-lock"></i>
+              </span>                        
+            <input type="password" name="password" id="password" [(ngModel)]="password" 
+             placeholder="Password" #pass="ngModel" required minlength="5">  
+             <div class="dropdown-divider"></div>                    
+          </div>
+        </div>
+
+          <!-- login and reigster -->
+      <div id="button"> 
+         <button type="ngSubmit"  class="btn btn-success ml-sm-3">Login</button>   
+          
+        <button  type="ngSubmit" class="btn btn-success ml-sm-3">Register</button>       
+      </div>  
+      </form>    
+  </div>
+</nav>
+<!-- second navbar -->
+<div id="secondNav">
+    <nav class="navbar navbar-expand-lg navbar-success bg-success">       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">esewa</a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link" href="#">Query</a>
+          </div>
+        </div>
+      </nav>
+</div>
+
+<!-- /second navbar -->
+
+<!-- registration for free -->
+<div class="container cbox">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <form class=" form-horizontol" #userForm="ngForm" (ngSubmit)="freeRegister(userForm)">
+        <div class="card cardbox">
+          <div class="card-header"><h3 class="text-center text-success"> Register for Free</h3></div>
+        
+        <fieldset>
+        <div class="card-body">
+          <!-- name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name"
+                 placeholder="Full name" [(ngModel)]="name" #fullname="ngModel"
+                  required autocomplete="off">                         
+                    <div class=" alert alert-danger text-danger" *ngIf="fullname.invalid && fullname.touched">
+                      first name is required...
+                    </div>                     
+            </div>
+          
+            <!-- dropdown occupation -->
+            <div class="form-group"> 
+              <label for="occupation">Occupation </label>                        
+            <select class="custom-select mb-3">
+              <option *ngFor = "let occup of occupation">{{occup}}</option>
+              <!-- <option selected>Student</option>
+              <option value="1">Junior Developer</option>
+              <option value="2">Senior Developer</option>
+              <option value="3">Intern Student</option> -->
+            </select>
+          </div>
+
+            <!-- gender -->
+            <div class="form-group" >
+                <label>Gender</label>
+                  <div class="form-check form-check-inline ">
+                      <input class="form-check-input ml-5" type="radio" name="gender" id="m" value="male" [(ngModel)]="gender" checked>
+                      <label class="form-check-label " for="m">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="f" value="female" [(ngModel)]="gender">
+                      <label class="form-check-label" for="f">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="th" value="other" [(ngModel)]="gender">
+                      <label class="form-check-label" for="th">Other</label>
+                    </div>            
+              </div>
+              <div class="dropdown-divider"></div>
+              <!-- file upload -->
+              <div class="form-group">                  
+                  <div class="fileUpload btn btn-primary">
+                    <span>Upload Image</span>
+                    <input #image accept="image/*" type="file" class="form-control-file upload" name="userimage" id="userimage" [(ngModel)]="userimage" 
+                    (change)="handleFile($event.target.files)"/>       
+                                
+                </div> 
+                <img [src]="imageUrl" class="img-thumbnail" style="width: 100px; height: 100px;">                 
+                <div class="dropdown-divider"></div>
+              </div>            
+              <!-- inner row for address -->
+              <div class="row">
+                <div class="col sm 6 paddress"> <h6 class="text-left">Permanent Address</h6>
+                  <div class="dropdown-divider"></div>
+                  <!-- zone -->
+                    <div class="form-group"> 
+                      <label for="pzone">Zone </label>
+                        <select class="form-control" name="pzone" id="pzone" [(ngModel)]="pzone">
+                          <option *ngFor = "let permaZone of permanentZone" [value]="permaZone.zoneId">{{permaZone.zoneName}}</option>                                                                            
+                        </select>
+                    </div>
+                    <!-- district -->
+                    <div class="form-group"> 
+                        <label for="pdistrict">District </label>
+                          <select class="form-control" searchable="Search district" name="pdistrict" id="pdistrict" [(ngModel)]="pdistrict">
+                            <option *ngFor = "let permaDistrict of permanentDistrict" [value]="permaDistrict.districtId">{{permaDistrict.districtName}}</option>                                                 
+                          </select> 
+                      </div>
+                      <!-- vdc -->
+                      <div class="form-group"> 
+                          <label for="pvdc">VDC </label>
+                          <select class="form-control" name="pvdc" id="pvdc" [(ngModel)]="pvdc" >
+                              <option *ngFor = "let permaVDC of permanentVdc" [value]="permaVDC.vdcId">{{permaVDC.vdcName}}</option>                                                     
+                            </select>
+                        </div>
+                </div>
+                <div class="col sm 6 taddress"> <h6 class="text-left">Temporary Address</h6>
+                  <div class="dropdown-divider"></div>
+                     <!-- zone -->
+                     <div class="form-group"> 
+                        <label for="tzone">Zone </label>
+                        <select class="form-control" name="tzone" id="tzone" [(ngModel)]="tzone">
+                            <option *ngFor = "let tempoZone of temporaryZone">{{tempoZone}}</option>                                                                               
+                          </select>
+                      </div>
+                      <!-- district -->
+                      <div class="form-group"> 
+                          <label for="tdistric">District </label>
+                          <select class="form-control" name="tdistric" id="tdistric" [(ngModel)]="tdistric">
+                              <option *ngFor = "let tempoDistrict of temporaryDistrict">{{tempoDistrict}}</option>                                                        
+                            </select>
+                        </div>
+                        <!--VDC  -->
+                        <div class="form-group"> 
+                            <label for="tvdc">VDC </label>
+                            <select class="form-control" name="tvdc"id="tvdc" [(ngModel)]="tvdc">
+                                <option *ngFor = "let tempoVDC of temporaryVdc">{{tempoVDC}}</option>                                                     
+                              </select>
+                            </div>
+                </div>
+              </div>
+        </div>
+        <div class="dropdown-divider"></div>      
+        <div class="card-footer">
+            <!-- <button type="ngSubmit" class="btn btn-success btn-lg">Submit</button> -->
+            <button class="btn btn-success btn-lg" (click)="openLg(content)">Submit</button>
+            <!-- star model -->
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title text-center">CONFIRM YOUR DETAILS</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- <p>{{userForm.value | json}}</p> -->
+                  <div id="modalImage" >
+                    <img [src]="imageUrl" class="img-thumbnail" width="100" height="100">                    
+                  </div>
+                 <div id="modalName">                
+                 <p>Full Name: {{name}}</p>
+                 </div>
+                 <div class="dropdown-divider"></div>
+                 <p>Occupation: {{occupation}}</p>
+                 <div class="dropdown-divider"></div>
+                 <p>Image: {{image}}</p>
+                 <div class="dropdown-divider"></div>
+                 <h6>Permanent address</h6>
+                 <div class="dropdown-divider"></div>
+                 <p>Zone: {{pzone}}</p>
+                 <p>District: {{pdistrict}}</p>
+                 <p>VDC: {{pvdc}}</p>
+                 <div class="dropdown-divider"></div>
+                 <h6>Temporary address</h6>
+                 <div class="dropdown-divider"></div>
+                 <p>Zone: {{tzone}}</p>
+                 <p>District: {{tdistric}}</p>
+                 <p>VDC: {{tvdc}}</p>
+                 <div class="dropdown-divider"></div>
+                 <p>Gender: {{gender}}</p>
+                 <div class="dropdown-divider"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="ngSubmit" class="btn btn-success " (click)="modal.close('Confirm click')">Confirm</button>
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
+            <!-- end modal -->
+            <button type="reset" class="btn btn-success btn-lg ml-sm-3">Clear</button>
+        </div>
+      </fieldset>
+     </div>
+      </form>
+   </div>
+  <div class="col-sm-1"></div>
+ </div>
+</div>
+</body>
+

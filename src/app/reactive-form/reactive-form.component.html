@@ -1,0 +1,125 @@
+
+<div class="container cbox"> 
+  <div class="card cardbox">
+    <div class="card-header ">
+        <h3 class="text-center">Reactive Form</h3>
+    </div>   
+     <!-- [formGroup]="reactiveForm" is instance created on component -->
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">    
+      <fieldset>
+      <div class="card-body">  
+       <div class="form-group"> 
+        <label for="firstname" class="control-label">First Name</label>
+        <input id="firstname" type="text" class="form-control" formControlName="firstname" 
+        [ngClass]="{'is-invalid':reactiveForm.get('firstname').invalid && 
+        (reactiveForm.get('firstname').touched || reactiveForm.get('firstname').dirty)}">
+        <span class="invalid-feedback"><p>First name is required</p></span>        
+      </div>      
+
+      <div class="form-group">
+       <label for="lastname" class="control-label">Last Name</label>
+       <input id="lastname" type="text" class="form-control" formControlName="lastname" 
+       [ngClass]="{'is-invalid':reactiveForm.get('lastname').invalid && 
+       (reactiveForm.get('lastname').touched || reactiveForm.get('lastname').dirty)}">
+       <span class="invalid-feedback"><p>Last name is required</p></span>  
+      </div>  
+      <div class="form-group">
+        <label for="email" class="control-label">Email</label>
+        <input id="email" type="email" class="form-control" formControlName="email"
+        [ngClass]="{'is-invalid':reactiveForm.get('email').invalid && 
+        (reactiveForm.get('email').touched || reactiveForm.get('email').dirty)}">
+        <span class="invalid-feedback">
+          <span *ngIf="reactiveForm.get('email').errors?.required"><p>Email is required</p></span>
+          <span *ngIf="reactiveForm.get('email').errors?.email"><p>Email addressis invalid</p></span>
+        </span>
+      </div>
+       <div class="form-group">          
+        <label for="password" class="control-label">Password</label>
+        <input id="password" type="password" class="form-control" formControlName="password"
+        [ngClass]="{'is-invalid':reactiveForm.get('password').invalid && 
+        (reactiveForm.get('password').touched || reactiveForm.get('password').dirty)}">
+        <span class="invalid-feedback">
+            <span *ngIf="reactiveForm.get('password').errors?.required"><p>Password is required</p></span>
+          <span *ngIf="reactiveForm.get('password').errors?.minlength"><p>Password must be atleast 6 charater</p></span>       
+        </span>
+       </div>
+       <!-- address -->
+         <div formGroupName="address">
+         <label >Address</label>
+         <div class="row">
+           <div class="col-md-4">
+              <div class="form-group">          
+                  <label>Street</label>
+                  <input type="text" class="form-control" formControlName="street"
+                  [ngClass]="{ 'is-invalid': f.address.controls.street.invalid && 
+                  (f.address.controls.street.touched || f.address.controls.street.dirty) }">  
+                  <span class="invalid-feedback"><p>Street name is required</p></span>
+              </div>    
+           </div>
+           <div class="col-md-4">
+              <div class="form-group">          
+                  <label>City</label>
+                  <input type="text" class="form-control" formControlName="city" 
+                  [ngClass]="{'is-invalid':f.address.controls.city.invalid && 
+                  (f.address.controls.city.touched || f.address.controls.city.dirty)}">
+                  <span class="invalid-feedback"><p>City name is required</p></span>  
+              </div>   
+           </div>
+           <div class="col-md-4">
+              <div class="form-group">          
+                  <label>State</label>
+                  <input type="text" class="form-control" formControlName="state"
+                  [ngClass]="{'is-invalid':f.address.controls.state.invalid && 
+                  (f.address.controls.state.touched || f.address.controls.state.dirty)}">
+                  <span class="invalid-feedback"><p>State name is required</p></span>
+              </div>   
+           </div>           
+         </div>
+       </div>  <!--address end -->
+       <div class="form-group">          
+          <label>Phone Number</label>
+          <input type="text" class="form-control" formControlName="phone" placeholder="+977  "
+          [ngClass]="{'is-invalid':reactiveForm.get('phone').invalid && 
+          (reactiveForm.get('phone').touched || reactiveForm.get('phone').dirty)}">
+          <span class="invalid-feedback">
+            <span *ngIf="reactiveForm.get('phone').errors?.required"><p>Phone number is required</p></span>
+            <span *ngIf="reactiveForm.get('phone').errors?.pattern"><p>phone number only can be number type and 10 digits</p></span>
+          </span>
+         </div>
+
+         <div class="form-group">          
+            <label>Gender</label>
+              <div class="form-check form-check-inline ">
+                <input class="form-check-input ml-5" type="radio" formControlName="gender" value="male" checked>
+                <label class="form-check-label " for="m">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="gender" value="female">
+                <label class="form-check-label" for="f">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="gender" value="other">
+                <label class="form-check-label" for="th">Other</label>
+              </div>              
+           </div>           
+          
+          </div>
+           <div class="card-footer">
+              <button type="ngSubmit" class="btn btn-primary btn-lg float-right" [disabled]="reactiveForm.invalid" >Submit</button> 
+              <!-- routerLink="/login" [disabled]="reactiveForm.invalid"-->
+           </div>
+      </fieldset>  
+    </form>       
+  </div>  
+</div>
+<p>{{reactiveForm.value | json}}</p>
+
+<div id="popover">
+<button type="button" class="btn btn-outline-secondary ml-5" placement="top"
+        ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." 
+        popoverTitle="Popover on top">
+  Popover on top
+</button>
+</div>
+
+

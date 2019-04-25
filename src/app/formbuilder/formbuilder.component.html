@@ -1,0 +1,110 @@
+<div class="container cbox"> 
+    <div class="card cardbox">
+      <div class="card-header ">
+          <h3 class="text-center">Reactive Form Using FormBuilder</h3>
+      </div>   
+       <!-- [formGroup]="reactiveForm" is instance created on component -->
+      <form [formGroup]="formBuilder" (ngSubmit)="onSubmit()">    
+        <fieldset>
+        <div class="card-body">  
+         <div class="form-group">
+          <label class="form-control-label" for="fullName">full Name</label>
+          <input type="text" id="fullName" class="form-control" formControlName="fullName" 
+          [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+          <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+            <div *ngIf="f.fullName.errors.required">Full Name is required</div>
+        </div>
+        </div>
+          
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" formControlName="email" 
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+        </div>
+         <div class="form-group">          
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password" 
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+        <!-- phone -->
+        <div class="form-group">          
+          <label>Phone Number</label>
+          <input type="text" class="form-control" formControlName="phone" 
+          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+          <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">Phone number is required</div>
+          </div>
+      </div>
+
+         </div>
+         <!-- address -->
+         <div formGroupName="address">           
+           <label class="mb-0">Address</label>
+           <div class="dropdown-divider mt-0 mb-3"></div>
+           <div class="row">
+             <div class="col-md-4">
+                <div class="form-group">          
+                    <label>Street</label>
+                    <input type="text" class="form-control" formControlName="street" 
+                    [ngClass]="{ 'is-invalid': submitted && f.address.controls.street.errors }">
+                    <div *ngIf="submitted && f.address.controls.street.errors" class="invalid-feedback">
+                      <div *ngIf="f.address.controls.street.errors.required">Street name is required</div>
+                  </div>
+                </div>    
+             </div>
+             <div class="col-md-4">
+                <div class="form-group">          
+                    <label>City</label>
+                    <input type="text" class="form-control" formControlName="city" 
+                    [ngClass]="{ 'is-invalid': submitted && f.address.controls.city.errors }">
+                    <div *ngIf="submitted && f.address.controls.city.errors" class="invalid-feedback">
+                      <div *ngIf="f.address.controls.city.errors.required">City name is required</div>
+                  </div>
+                </div>   
+             </div>
+             <div class="col-md-4">
+                <div class="form-group">          
+                    <label>State</label>
+                    <input type="text" class="form-control" formControlName="state" 
+                    [ngClass]="{ 'is-invalid': submitted && f.address.controls.state.errors }">
+                    <div *ngIf="submitted && f.address.controls.state.errors" class="invalid-feedback">
+                      <div *ngIf="f.address.controls.state.errors.required">State name is required</div>
+                  </div>
+                </div>   
+             </div>           
+           </div>
+         </div> <!--address end-->        
+  
+           <div class="form-group" >          
+              <label>Gender</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input ml-5" type="radio" formControlName="gender" value="male" checked>
+                  <label class="form-check-label " for="m">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="gender" value="female">
+                  <label class="form-check-label" for="f">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="gender" value="other">
+                  <label class="form-check-label" for="th">Other</label>
+                </div>              
+             </div>  
+            </div>
+             <div class="card-footer">
+                <button type="ngSubmit" class="btn btn-primary btn-lg float-right">Submit</button> 
+                <!-- routerLink="/login" [disabled]="formBuilder.invalid"-->
+             </div>
+        </fieldset>  
+      </form>       
+    </div>  
+  </div>
+  <p>{{formBuilder.value | json}}</p>
+  

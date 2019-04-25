@@ -1,0 +1,130 @@
+.cbox{
+    margin-top: 50px;
+}
+#logo{
+    margin-left: 80px;
+}
+#secondNav .navbar{
+    height: 40px;
+    margin-top: 0px;
+}
+#secondNav, a{
+    color: white;
+}
+#secondNav .navbar-nav{
+    margin-left: 75px;
+}
+/* .paddress{
+    border: 2px solid lightgrey;
+}
+
+.taddress{
+    border: 2px solid lightgrey;
+}  */
+
+.cardbox{
+    border: 2px solid lightgreen;
+}
+.user{
+    width: 7x;
+    
+}
+ #searchform button[type="submit"]{
+    border-radius: 0px;
+    height: 35px;
+    width: 40px;
+    background-color: green;
+    border: none; 
+}
+ #searchform button[type="submit"]:focus{
+    border-radius: 0px;
+    height: 35px;
+    width: 40px;
+    outline:none;   
+}
+
+ #searchform input[type="search"]{   
+    border-radius: 0px;
+    width: 400px;
+    height: 35px;
+    border:1px solid green;  
+       
+} 
+ #searchform input[type="search"]:focus{   
+    border-radius: 0px;
+    width: 400px;
+    height: 35px;
+    outline: none;
+} 
+#borderlessUser input[type=text] {
+    border: none;
+    background-color: transparent;    
+    width: 100px;
+    height: 30px;   
+    color: white; 
+    border-bottom: 1px solid green; 
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; 
+    text-align: center;  
+  }
+#borderlessUser input[type=text]:focus {    
+    background-color: transparent;
+    outline: none;
+    width: 100px;
+    height: 30px;
+  } 
+
+#borderlessPassword input[type=password] {
+    border: none;
+    background-color: transparent;    
+    width: 100px;
+    height: 30px;    
+    color: white;   
+    border-bottom: 1px solid green;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; 
+    text-align: center;
+        
+  }
+  #borderlessPassword input[type=password]:focus{    
+    background-color: transparent;     
+    width: 100px;
+    height: 30px;
+    outline: none;          
+  } 
+ 
+#button .btn-success{
+    border-radius: 0px;
+} 
+.modal-title{   
+    color: green;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom:1px solid brown;
+    font-weight: bold;
+    
+} 
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+#modalImage{
+    float: right;  
+    
+}
+#modalName{
+    margin-top: 100px;
+}
+  

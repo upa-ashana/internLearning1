@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>angular table</title>   
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">  
+  </head>
+  <body>
+    <div class="container cbox">
+      <!-- search box -->
+      <div id="searchform">  
+          
+       <input type="search" [(ngModel)]="search" (ngModelChange)="filter($event)" placeholder="Search...">  <!--[mfData]="data$ | async"  -->
+     </div>
+      <!-- /search box -->
+    <table class="table table-hover table-bordered" [mfData]="data$ | async" #mf="mfDataTable" [mfRowsOnPage]="5"> <!--for a paticular sort:- mfSortBy="name" mfSortOrder="desc" mfSortOrder="asc"-->
+      <caption>List of Users</caption>           
+      <thead class="heading">
+        <tr>
+          <th> 
+            <mfDefaultSorter by="sno">Id</mfDefaultSorter>
+          </th>
+          <th> 
+            <mfDefaultSorter by="name">Full Name</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="occupation">Occupation</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="gender">Gender</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="address">Address</mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let angulatTable of mf.data">
+          <td>{{angulatTable.sno}}</td>
+          <td>{{angulatTable.name}}</td>
+          <td>{{angulatTable.occupation}}</td>
+          <td>{{angulatTable.gender}}</td>
+          <td>{{angulatTable.address}}</td>
+          
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5"> 
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>   
+              <!-- totalrows -->
+              
+                <h6 >Total rows : {{ totalRows }} </h6>
+                
+                    
+          </td>
+        </tr>
+      </tfoot>
+    </table> 
+  </div>  
+  </body>
+</html>
