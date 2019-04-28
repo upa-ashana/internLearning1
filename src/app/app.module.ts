@@ -8,13 +8,15 @@ import {LoginService} from './user-login/login.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UshaComponent } from './usha/usha.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
     NavigationComponent,
-    DashboardComponent
+    DashboardComponent,
+    UshaComponent
   ],
   imports: [
     BrowserModule,
