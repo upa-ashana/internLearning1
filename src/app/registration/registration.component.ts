@@ -9,6 +9,8 @@ import {RegistrationModel} from './registration-model';
 })
 export class RegistrationComponent implements OnInit {
 // registrationModel:RegistrationModel=new RegistrationModel();
+imageUrl1 : string ;
+fileToUpload1:File=null;
   constructor() { }
 
   ngOnInit() {
@@ -18,5 +20,15 @@ export class RegistrationComponent implements OnInit {
   userRegistration(){
     console.log("user registered")
     
+  }
+
+  handleFile1(file:FileList){
+    this.fileToUpload1=file.item(0);
+    //show iamge preview
+    var reader=new FileReader();
+    reader.onload=(event:any)=>{
+      this.imageUrl1=event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload1);
   }
 }
